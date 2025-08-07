@@ -23,8 +23,8 @@ export default function Home() {
             Welcome to My Portfolio
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            I'm Krishna, a passionate developer creating amazing digital
-            experiences. Explore my work and let's build something great
+            I&apos;m Krishna, a passionate developer creating amazing digital
+            experiences. Explore my work and let&apos;s build something great
             together.
           </p>
           <div className="flex gap-4 justify-center">
@@ -173,7 +173,7 @@ export default function Home() {
           </h2>
           <div className="max-w-4xl mx-auto text-center mb-16">
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              I'm always open to discussing new opportunities, interesting
+              I&apos;m always open to discussing new opportunities, interesting
               projects, or just having a chat about technology. Feel free to
               reach out through any of the platforms below!
             </p>
