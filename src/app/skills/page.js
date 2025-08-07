@@ -31,16 +31,16 @@ export default function Skills() {
   return (
     <div className="min-h-screen pt-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">
+        <h1 className="text-4xl font-bold text-foreground mb-8 text-center">
           My Skills
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg"
+              className="p-6 bg-card rounded-lg shadow-lg border"
             >
-              <h3 className="text-xl font-semibold mb-4 text-center">
+              <h3 className="text-xl font-semibold mb-4 text-center text-card-foreground">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-2 justify-center">

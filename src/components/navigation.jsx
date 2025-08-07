@@ -22,6 +22,7 @@ export function Navigation() {
     { name: "About", link: "/about" },
     { name: "Projects", link: "/projects" },
     { name: "Skills", link: "/skills" },
+    { name: "Certifications", link: "#certifications" },
     { name: "Contact", link: "/contact" },
   ];
 

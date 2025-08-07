@@ -45,10 +45,23 @@ export const NavBody = ({ children, className, visible }) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
+        backdropFilter: visible
+          ? "blur(16px) saturate(180%)"
+          : "blur(8px) saturate(120%)",
         boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
-          : "none",
+          ? [
+              "0 0 32px rgba(59, 130, 246, 0.15)", // Blue glow
+              "0 8px 32px rgba(0, 0, 0, 0.12)", // Main shadow
+              "inset 0 1px 0 rgba(255, 255, 255, 0.2)", // Top highlight
+              "inset 0 -1px 0 rgba(255, 255, 255, 0.1)", // Bottom highlight
+              "0 0 0 1px rgba(255, 255, 255, 0.05)", // Border glow
+            ].join(", ")
+          : [
+              "0 0 16px rgba(59, 130, 246, 0.08)", // Subtle blue glow
+              "0 4px 16px rgba(0, 0, 0, 0.08)", // Light shadow
+              "inset 0 1px 0 rgba(255, 255, 255, 0.1)", // Subtle top highlight
+              "0 0 0 1px rgba(255, 255, 255, 0.03)", // Very subtle border
+            ].join(", "),
         width: visible ? "40%" : "100%",
         y: visible ? 20 : 0,
       }}
@@ -61,12 +74,21 @@ export const NavBody = ({ children, className, visible }) => {
         minWidth: "800px",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
-        visible && "bg-white/80 dark:bg-neutral-950/80",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex",
+        "border border-white/10 dark:border-white/5",
         className
       )}
     >
-      {children}
+      {/* Liquid glass reflection effect */}
+      <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-gradient-to-br from-blue-400/2 to-transparent rounded-full blur-sm" />
+        <div className="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-gradient-to-tl from-purple-400/1 to-transparent rounded-full blur-sm" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 flex w-full items-center justify-between">
+        {children}
+      </div>
     </motion.div>
   );
 };
@@ -93,7 +115,11 @@ export const NavItems = ({ items, className, onItemClick }) => {
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="absolute inset-0 h-full w-full rounded-full bg-gradient-to-r from-blue-500/15 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/15 backdrop-blur-sm border border-white/15 dark:border-white/10"
+              style={{
+                boxShadow:
+                  "0 2px 8px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+              }}
             />
           )}
           <span className="relative z-20">{item.name}</span>
@@ -107,14 +133,26 @@ export const MobileNav = ({ children, className, visible }) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
+        backdropFilter: visible
+          ? "blur(16px) saturate(180%)"
+          : "blur(8px) saturate(120%)",
         boxShadow: visible
-          ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
-          : "none",
+          ? [
+              "0 0 24px rgba(59, 130, 246, 0.12)", // Blue glow
+              "0 8px 24px rgba(0, 0, 0, 0.15)", // Main shadow
+              "inset 0 1px 0 rgba(255, 255, 255, 0.15)", // Top highlight
+              "0 0 0 1px rgba(255, 255, 255, 0.08)", // Border glow
+            ].join(", ")
+          : [
+              "0 0 12px rgba(59, 130, 246, 0.06)", // Subtle blue glow
+              "0 4px 12px rgba(0, 0, 0, 0.1)", // Light shadow
+              "inset 0 1px 0 rgba(255, 255, 255, 0.08)", // Subtle top highlight
+              "0 0 0 1px rgba(255, 255, 255, 0.05)", // Very subtle border
+            ].join(", "),
         width: visible ? "90%" : "100%",
         paddingRight: visible ? "12px" : "0px",
         paddingLeft: visible ? "12px" : "0px",
-        borderRadius: visible ? "4px" : "2rem",
+        borderRadius: visible ? "16px" : "2rem",
         y: visible ? 20 : 0,
       }}
       transition={{
@@ -122,13 +160,21 @@ export const MobileNav = ({ children, className, visible }) => {
         stiffness: 200,
         damping: 50,
       }}
+      style={{}}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
-        visible && "bg-white/80 dark:bg-neutral-950/80",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-0 py-2 lg:hidden",
+        "border border-white/10 dark:border-white/5",
         className
       )}
     >
-      {children}
+      {/* Liquid glass reflection effect */}
+      <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-gradient-to-br from-blue-400/1 to-transparent rounded-full blur-sm" />
+        <div className="absolute bottom-0 right-1/4 w-1/3 h-1/3 bg-gradient-to-tl from-purple-400/1 to-transparent rounded-full blur-sm" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full">{children}</div>
     </motion.div>
   );
 };
@@ -151,15 +197,38 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, scale: 0.95, y: -10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: -10 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          style={{
+            backdropFilter: "blur(20px) saturate(180%)",
+            boxShadow: [
+              "0 0 32px rgba(59, 130, 246, 0.15)", // Blue glow
+              "0 20px 40px rgba(0, 0, 0, 0.15)", // Deep shadow
+              "inset 0 1px 0 rgba(255, 255, 255, 0.1)", // Top highlight
+              "inset 0 -1px 0 rgba(255, 255, 255, 0.05)", // Bottom highlight
+              "0 0 0 1px rgba(255, 255, 255, 0.08)", // Border glow
+            ].join(", "),
+          }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-2xl px-4 py-8",
+            "backdrop-blur-md border border-white/15 dark:border-white/10",
+            "relative overflow-hidden",
             className
           )}
         >
-          {children}
+          {/* Liquid glass reflection effects */}
+          <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+            <div className="absolute top-0 left-1/3 w-2/3 h-1/2 bg-gradient-to-br from-blue-400/2 to-transparent rounded-full blur-lg" />
+            <div className="absolute bottom-0 right-1/3 w-1/2 h-1/3 bg-gradient-to-tl from-purple-400/1 to-transparent rounded-full blur-lg" />
+            <div className="absolute top-1/4 right-0 w-1/4 h-1/4 bg-gradient-to-l from-cyan-400/1 to-transparent rounded-full blur-md" />
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 w-full flex flex-col gap-4">
+            {children}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -167,10 +236,23 @@ export const MobileNavMenu = ({ children, className, isOpen, onClose }) => {
 };
 
 export const MobileNavToggle = ({ isOpen, onClick }) => {
-  return isOpen ? (
-    <IconX className="text-black dark:text-white" onClick={onClick} />
-  ) : (
-    <IconMenu2 className="text-black dark:text-white" onClick={onClick} />
+  return (
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={onClick}
+      className="relative p-2 rounded-lg backdrop-blur-sm border border-white/20 dark:border-white/10 transition-all duration-200 hover:border-white/30 dark:hover:border-white/20"
+      style={{
+        boxShadow:
+          "0 2px 8px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+      }}
+    >
+      {isOpen ? (
+        <IconX className="text-black dark:text-white w-5 h-5" />
+      ) : (
+        <IconMenu2 className="text-black dark:text-white w-5 h-5" />
+      )}
+    </motion.button>
   );
 };
 
@@ -178,10 +260,17 @@ export const NavbarLogo = () => {
   return (
     <a
       href="/"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+      className="relative z-20 mr-4 flex items-center space-x-2 px-3 py-2 rounded-xl backdrop-blur-sm border border-white/10 dark:border-white/5 text-sm font-normal transition-all duration-300 hover:border-white/20 dark:hover:border-white/10 hover:scale-105"
+      style={{
+        boxShadow:
+          "0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+      }}
     >
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white font-bold text-sm">
-        K
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white font-bold text-sm shadow-lg">
+        <span className="relative">
+          K
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent"></div>
+        </span>
       </div>
       <span className="font-medium text-black dark:text-white">Krishna</span>
     </a>
@@ -197,15 +286,16 @@ export const NavbarButton = ({
   ...props
 }) => {
   const baseStyles =
-    "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
+    "px-4 py-2 rounded-xl text-sm font-medium relative cursor-pointer transition-all duration-300 inline-block text-center backdrop-blur-sm border";
 
   const variantStyles = {
     primary:
-      "shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
-    secondary: "bg-transparent shadow-none dark:text-white",
-    dark: "bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
+      "bg-gradient-to-r from-blue-500/90 to-purple-600/90 text-white border-white/20 shadow-[0_0_20px_rgba(59,130,246,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4),inset_0_1px_0_rgba(255,255,255,0.3)] hover:scale-105 hover:-translate-y-0.5",
+    secondary:
+      "backdrop-blur-md text-foreground border-white/20 shadow-[0_2px_8px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)]",
+    dark: "bg-gradient-to-r from-gray-800/90 to-gray-900/90 text-white border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(0,0,0,0.4)] hover:scale-105",
     gradient:
-      "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
+      "bg-gradient-to-r from-blue-500/90 to-blue-700/90 text-white border-white/20 shadow-[0_0_20px_rgba(59,130,246,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-105",
   };
 
   return (
