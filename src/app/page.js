@@ -1,5 +1,6 @@
 "use client";
 
+// Portfolio page - deployment fix
 import { Button } from "@/components/ui/button";
 import {
   DraggableCardBody,
