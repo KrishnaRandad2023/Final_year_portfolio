@@ -313,7 +313,7 @@ export default function Home() {
                       </span>
                     </div>
                     <p className="text-muted-foreground mb-3">
-                      Team "Runtime Terror" - Team Lead & Project Lead
+                      Team &quot;Runtime Terror&quot; - Team Lead & Project Lead
                     </p>
                     <ul className="text-sm text-muted-foreground space-y-1">
                       <li>
