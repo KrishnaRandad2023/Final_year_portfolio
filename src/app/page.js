@@ -9,6 +9,9 @@ import {
 } from "@/components/ui/draggable-card";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import LightRays from "@/components/ui/light-rays";
+import TypingAnimation from "@/components/ui/typing-animation";
+import Tilt3D from "@/components/ui/tilt-3d";
+import MagneticButton from "@/components/ui/magnetic-button";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -47,35 +50,72 @@ export default function Home() {
           <h1 className="text-6xl font-bold text-foreground mb-6 hover:text-primary transition-colors duration-500">
             Krishna Vijaykumar Randad
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            AI/ML Engineer & Full Stack Developer with 9.13 CGPA at VIT.
-            Flipkart GRiD 7.0 National Runner-Up. Building scalable solutions
-            with expertise in Python, Java, React, and cloud technologies.
+
+          <div className="text-xl text-muted-foreground mb-8 h-8 flex items-center justify-center">
+            <TypingAnimation
+              texts={[
+                "AI/ML Engineer",
+                "Full Stack Developer",
+                "Flipkart GRiD 7.0 Runner-Up",
+                "VIT Student with 9.13 CGPA",
+              ]}
+              speed={80}
+              deleteSpeed={40}
+              pauseTime={2000}
+              className="font-medium"
+              cursorColor="#3b82f6"
+            />
+          </div>
+
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+            Building scalable solutions with expertise in Python, Java, React,
+            and cloud technologies. Passionate about creating innovative
+            AI-powered applications.
           </p>
-          <div className="flex gap-4 justify-center">
-            <Button
-              className="group relative overflow-hidden hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
-              onClick={() =>
-                document
-                  .getElementById("projects")
-                  .scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              <span className="relative z-10">View My Work</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </Button>
-            <Button
-              variant="outline"
-              className="group relative overflow-hidden hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:bg-primary hover:text-primary-foreground hover:border-primary"
-              onClick={() =>
-                window.open(
-                  "https://drive.google.com/file/d/1Zk21P9hQxXAqEv07gRW0IsoxhmX7ZDMr/view?usp=sharing",
-                  "_blank"
-                )
-              }
-            >
-              <span className="relative z-10">Download Resume</span>
-            </Button>
+
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Tilt3D className="transform-gpu will-change-transform">
+              <MagneticButton
+                className="group relative overflow-hidden hover:scale-105 transition-all duration-200 hover:shadow-lg hover:shadow-primary/25 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium"
+                onClick={() =>
+                  document
+                    .getElementById("projects")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                magneticPower={0.15}
+              >
+                <span className="relative z-10">View My Work</span>
+              </MagneticButton>
+            </Tilt3D>
+
+            <Tilt3D className="transform-gpu will-change-transform">
+              <MagneticButton
+                className="group relative overflow-hidden hover:scale-105 transition-all duration-200 hover:shadow-lg hover:shadow-primary/25 px-6 py-3 border border-border bg-background text-foreground rounded-lg font-medium hover:bg-primary hover:text-primary-foreground"
+                onClick={() =>
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                magneticPower={0.15}
+              >
+                <span className="relative z-10">Get In Touch</span>
+              </MagneticButton>
+            </Tilt3D>
+
+            <Tilt3D className="transform-gpu will-change-transform">
+              <MagneticButton
+                className="group relative overflow-hidden hover:scale-105 transition-all duration-200 hover:shadow-lg hover:shadow-primary/25 px-6 py-3 border border-border bg-background text-foreground rounded-lg font-medium hover:bg-primary hover:text-primary-foreground"
+                onClick={() =>
+                  window.open(
+                    "https://drive.google.com/file/d/1Zk21P9hQxXAqEv07gRW0IsoxhmX7ZDMr/view?usp=sharing",
+                    "_blank"
+                  )
+                }
+                magneticPower={0.15}
+              >
+                <span className="relative z-10">Download Resume</span>
+              </MagneticButton>
+            </Tilt3D>
           </div>
         </section>
 
@@ -110,30 +150,27 @@ export default function Home() {
             ].map((project, i) => (
               <div
                 key={i}
-                className="group relative p-6 bg-card rounded-xl shadow-lg border border-border hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden"
+                className="group relative p-6 bg-card rounded-xl shadow-lg border border-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden transform-gpu will-change-transform"
               >
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Animated border glow */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 opacity-0 group-hover:opacity-100 blur-sm -z-10 transition-opacity duration-500" />
+                {/* Simplified hover glow effect */}
+                <div className="absolute inset-0 rounded-xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="relative z-10">
-                  <h3 className="text-xl font-semibold mb-4 text-card-foreground group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-semibold mb-4 text-card-foreground group-hover:text-primary transition-colors duration-200">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed group-hover:text-card-foreground/80 transition-colors duration-300">
+                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed group-hover:text-card-foreground/80 transition-colors duration-200">
                     {project.description}
                   </p>
                   <div className="mb-4">
-                    <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full group-hover:bg-primary/20 group-hover:text-primary transition-all duration-300">
+                    <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full group-hover:bg-primary/20 transition-all duration-200">
                       {project.tech}
                     </span>
                   </div>
                   <Button
                     variant="outline"
                     size="sm"
-                    className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300"
+                    className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-200"
                     onClick={() => window.open(project.link, "_blank")}
                   >
                     View Project →
