@@ -31,10 +31,17 @@ export default function Home() {
             with expertise in Python, Java, React, and cloud technologies.
           </p>
           <div className="flex gap-4 justify-center">
-            <Button>View My Work</Button>
-            <Button 
+            <Button onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>
+              View My Work
+            </Button>
+            <Button
               variant="outline"
-              onClick={() => window.open("https://drive.google.com/file/d/1Zk21P9hQxXAqEv07gRW0IsoxhmX7ZDMr/view?usp=sharing", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://drive.google.com/file/d/1Zk21P9hQxXAqEv07gRW0IsoxhmX7ZDMr/view?usp=sharing",
+                  "_blank"
+                )
+              }
             >
               Download Resume
             </Button>
@@ -42,7 +49,7 @@ export default function Home() {
         </section>
 
         {/* Featured Projects */}
-        <section className="py-20">
+        <section id="projects" className="py-20">
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
             Featured Projects
           </h2>
@@ -228,41 +235,60 @@ export default function Home() {
               <h3 className="text-3xl font-bold text-center mb-8 text-foreground">
                 Education
               </h3>
-              <div className="max-w-4xl mx-auto">
+              <div className="max-w-4xl mx-auto space-y-6">
+                {/* VIT */}
                 <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
                       <h4 className="text-xl font-bold text-card-foreground mb-2">
-                        Vellore Institute of Technology, Chennai
+                        Vellore Institute of Technology
                       </h4>
                       <p className="text-lg text-muted-foreground mb-2">
-                        Bachelor of Technology - Computer Science Engineering
+                        Bachelor of Technology in Computer Science with Specialization in IoT
                       </p>
-                      <p className="text-md text-primary font-medium mb-2">
-                        Specialization: Internet of Things (IoT)
-                      </p>
+                      <p className="text-sm text-muted-foreground">Tamil Nadu, India</p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-right mt-4 md:mt-0">
                       <span className="text-2xl font-bold text-primary">9.13 CGPA</span>
-                      <p className="text-sm text-muted-foreground">2022 - 2026</p>
+                      <p className="text-sm text-muted-foreground">Sept. 2022 - Present</p>
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                </div>
+
+                {/* HSC */}
+                <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
-                      <h5 className="font-semibold text-card-foreground mb-2">Key Achievements:</h5>
-                      <ul className="text-sm text-muted-foreground space-y-1">
-                        <li>• Consistent Dean&apos;s List performance</li>
-                        <li>• Top 5% in Computer Science batch</li>
-                        <li>• Active in coding competitions</li>
-                      </ul>
+                      <h4 className="text-xl font-bold text-card-foreground mb-2">
+                        R.L.T. College of Science, Akola
+                      </h4>
+                      <p className="text-lg text-muted-foreground mb-2">
+                        HSC - Maharashtra State Board
+                      </p>
+                      <p className="text-sm text-muted-foreground">Maharashtra, India</p>
                     </div>
+                    <div className="text-right mt-4 md:mt-0">
+                      <span className="text-2xl font-bold text-primary">77%</span>
+                      <p className="text-sm text-muted-foreground">May 2020 - Mar. 2022</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SSC */}
+                <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
-                      <h5 className="font-semibold text-card-foreground mb-2">Relevant Coursework:</h5>
-                      <ul className="text-sm text-muted-foreground space-y-1">
-                        <li>• Data Structures & Algorithms</li>
-                        <li>• Machine Learning & AI</li>
-                        <li>• IoT Systems & Embedded Programming</li>
-                      </ul>
+                      <h4 className="text-xl font-bold text-card-foreground mb-2">
+                        Kothari Convent High School, Akola
+                      </h4>
+                      <p className="text-lg text-muted-foreground mb-2">
+                        SSC - Maharashtra State Board
+                      </p>
+                      <p className="text-sm text-muted-foreground">Maharashtra, India</p>
+                    </div>
+                    <div className="text-right mt-4 md:mt-0">
+                      <span className="text-2xl font-bold text-primary">97%</span>
+                      <p className="text-sm text-muted-foreground">Jun. 2010 - Mar. 2020</p>
                     </div>
                   </div>
                 </div>
@@ -279,37 +305,28 @@ export default function Home() {
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div className="flex-1">
                       <h4 className="text-xl font-bold text-card-foreground mb-2">
-                        AI Intern
+                        AI Intern (On-site)
                       </h4>
                       <p className="text-lg text-primary font-semibold mb-2">
-                        OnDevice Solutions Ltd. | London, UK
+                        OnDevice Solutions Ltd.
                       </p>
                       <p className="text-md text-muted-foreground mb-3">
-                        June 2025 - July 2025 | On-site Internship
+                        Hyderabad, India | June 2025 - July 2025
                       </p>
-                    </div>
-                    <div className="text-right">
-                      <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                        Remote/On-site
-                      </span>
                     </div>
                   </div>
                   <div className="mb-4">
-                    <h5 className="font-semibold text-card-foreground mb-3">Key Achievements & Responsibilities:</h5>
                     <ul className="text-sm text-muted-foreground space-y-2">
-                      <li>• Developed an offline AI-powered form filling system achieving 92% accuracy in data extraction</li>
-                      <li>• Implemented machine learning models for document processing and OCR optimization</li>
-                      <li>• Collaborated with senior developers on production-level AI applications</li>
-                      <li>• Optimized model performance for edge computing environments</li>
-                      <li>• Contributed to reducing manual data entry time by 75% for client workflows</li>
+                      <li>
+                        • Built an Offline Automated Form Filling system processing 500+ voice transcripts daily, extracting structured data from Android apps and boosting data collection efficiency by 35%
+                      </li>
+                      <li>
+                        • Architected and optimized a modular NLP pipeline combining T5 and RoBERTa models, achieving 92% accuracy and reducing inference time by 40% through ONNX, TFLite, and GGUF deployment strategies
+                      </li>
+                      <li>
+                        • Collaborated with 3 Android engineers across 2 teams to integrate model capabilities, can deliver robust offline functionality for 10,000+ daily active users
+                      </li>
                     </ul>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Python</span>
-                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">TensorFlow</span>
-                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">OpenCV</span>
-                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">OCR</span>
-                    <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Machine Learning</span>
                   </div>
                 </div>
               </div>
@@ -319,166 +336,106 @@ export default function Home() {
               <h3 className="text-3xl font-bold text-center mb-8 text-foreground">
                 Technical Skills
               </h3>
-              <div className="max-w-5xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* Programming Languages */}
                   <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                    <h4 className="text-lg font-semibold mb-4 text-card-foreground flex items-center">
-                      <span className="mr-2">💻</span>
+                    <h4 className="text-lg font-semibold mb-4 text-card-foreground">
                       Programming Languages
                     </h4>
-                    <div className="space-y-3">
-                      {["Python", "Java", "C/C++", "JavaScript", "TypeScript"].map((skill, index) => (
-                        <div key={index} className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-muted-foreground">{skill}</span>
-                          <div className="flex space-x-1">
-                            {Array.from({ length: 5 }, (_, i) => (
-                              <div
-                                key={i}
-                                className={`w-2 h-2 rounded-full ${
-                                  i < (skill === "Python" || skill === "Java" ? 5 : skill === "JavaScript" ? 4 : 3)
-                                    ? "bg-primary"
-                                    : "bg-muted"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </div>
+                    <div className="flex flex-wrap gap-3">
+                      {["C", "C++", "Python", "Java"].map((skill, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
+                        >
+                          {skill}
+                        </span>
                       ))}
                     </div>
                   </div>
 
                   {/* Web Technologies */}
                   <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                    <h4 className="text-lg font-semibold mb-4 text-card-foreground flex items-center">
-                      <span className="mr-2">🌐</span>
+                    <h4 className="text-lg font-semibold mb-4 text-card-foreground">
                       Web Technologies
                     </h4>
-                    <div className="space-y-3">
-                      {["React.js", "Next.js", "Node.js", "Express.js", "HTML/CSS"].map((skill, index) => (
-                        <div key={index} className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-muted-foreground">{skill}</span>
-                          <div className="flex space-x-1">
-                            {Array.from({ length: 5 }, (_, i) => (
-                              <div
-                                key={i}
-                                className={`w-2 h-2 rounded-full ${
-                                  i < (skill === "React.js" || skill === "Next.js" ? 5 : skill === "Node.js" ? 4 : 3)
-                                    ? "bg-primary"
-                                    : "bg-muted"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </div>
+                    <div className="flex flex-wrap gap-3">
+                      {["JavaScript", "HTML", "CSS", "React.js", "Node.js"].map((skill, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
+                        >
+                          {skill}
+                        </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* AI/ML & Data */}
+                  {/* Cloud & Database */}
                   <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                    <h4 className="text-lg font-semibold mb-4 text-card-foreground flex items-center">
-                      <span className="mr-2">🤖</span>
-                      AI/ML & Data
+                    <h4 className="text-lg font-semibold mb-4 text-card-foreground">
+                      Cloud & Database
                     </h4>
-                    <div className="space-y-3">
-                      {["Scikit-learn", "TensorFlow", "OpenCV", "Pandas", "NumPy"].map((skill, index) => (
-                        <div key={index} className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-muted-foreground">{skill}</span>
-                          <div className="flex space-x-1">
-                            {Array.from({ length: 5 }, (_, i) => (
-                              <div
-                                key={i}
-                                className={`w-2 h-2 rounded-full ${
-                                  i < (skill === "Scikit-learn" || skill === "OpenCV" ? 5 : 4)
-                                    ? "bg-primary"
-                                    : "bg-muted"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </div>
+                    <div className="flex flex-wrap gap-3">
+                      {["AWS", "Vercel", "MySQL"].map((skill, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
+                        >
+                          {skill}
+                        </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Cloud & DevOps */}
+                  {/* ML/AI & Data Science */}
                   <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                    <h4 className="text-lg font-semibold mb-4 text-card-foreground flex items-center">
-                      <span className="mr-2">☁️</span>
-                      Cloud & DevOps
+                    <h4 className="text-lg font-semibold mb-4 text-card-foreground">
+                      ML/AI & Data Science
                     </h4>
-                    <div className="space-y-3">
-                      {["AWS", "Vercel", "Git", "Docker", "Linux"].map((skill, index) => (
-                        <div key={index} className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-muted-foreground">{skill}</span>
-                          <div className="flex space-x-1">
-                            {Array.from({ length: 5 }, (_, i) => (
-                              <div
-                                key={i}
-                                className={`w-2 h-2 rounded-full ${
-                                  i < (skill === "AWS" || skill === "Git" ? 5 : skill === "Vercel" ? 4 : 3)
-                                    ? "bg-primary"
-                                    : "bg-muted"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </div>
+                    <div className="flex flex-wrap gap-3">
+                      {["NumPy", "Pandas", "Scikit-learn", "Matplotlib", "OpenCV", "ONNX", "TFLite", "GGUF"].map((skill, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
+                        >
+                          {skill}
+                        </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Database & Tools */}
+                  {/* Development Tools */}
                   <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                    <h4 className="text-lg font-semibold mb-4 text-card-foreground flex items-center">
-                      <span className="mr-2">🗄️</span>
-                      Database & Tools
+                    <h4 className="text-lg font-semibold mb-4 text-card-foreground">
+                      Development Tools
                     </h4>
-                    <div className="space-y-3">
-                      {["MySQL", "PostgreSQL", "MongoDB", "Firebase", "Postman"].map((skill, index) => (
-                        <div key={index} className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-muted-foreground">{skill}</span>
-                          <div className="flex space-x-1">
-                            {Array.from({ length: 5 }, (_, i) => (
-                              <div
-                                key={i}
-                                className={`w-2 h-2 rounded-full ${
-                                  i < (skill === "MySQL" ? 5 : 4)
-                                    ? "bg-primary"
-                                    : "bg-muted"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </div>
+                    <div className="flex flex-wrap gap-3">
+                      {["Git", "VS Code", "Jupyter Notebook", "CodeBlocks"].map((skill, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
+                        >
+                          {skill}
+                        </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Hardware & IoT */}
+                  {/* Embedded Systems */}
                   <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                    <h4 className="text-lg font-semibold mb-4 text-card-foreground flex items-center">
-                      <span className="mr-2">⚡</span>
-                      Hardware & IoT
+                    <h4 className="text-lg font-semibold mb-4 text-card-foreground">
+                      Embedded Systems
                     </h4>
-                    <div className="space-y-3">
-                      {["Arduino", "Raspberry Pi", "ONNX", "TensorFlow Lite", "Embedded C"].map((skill, index) => (
-                        <div key={index} className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-muted-foreground">{skill}</span>
-                          <div className="flex space-x-1">
-                            {Array.from({ length: 5 }, (_, i) => (
-                              <div
-                                key={i}
-                                className={`w-2 h-2 rounded-full ${
-                                  i < (skill === "Arduino" ? 5 : skill === "ONNX" ? 4 : 3)
-                                    ? "bg-primary"
-                                    : "bg-muted"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </div>
+                    <div className="flex flex-wrap gap-3">
+                      {["Arduino", "Tinkercad"].map((skill, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
+                        >
+                          {skill}
+                        </span>
                       ))}
                     </div>
                   </div>
