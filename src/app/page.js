@@ -231,7 +231,7 @@ export default function Home() {
         </section>
 
         {/* About Me */}
-        <section className="py-20">
+        <section id="about" className="py-20">
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
             About Me
           </h2>
@@ -365,7 +365,7 @@ export default function Home() {
               </div>
             </div>
             {/* Technical Skills Section */}
-            <div className="mb-16">
+            <div id="skills" className="mb-16">
               <h3 className="text-3xl font-bold text-center mb-8 text-foreground">
                 Technical Skills
               </h3>

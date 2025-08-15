@@ -18,12 +18,12 @@ export function Navigation() {
 
   // Navigation items - customize these for your portfolio
   const navItems = [
-    { name: "Home", link: "/" },
-    { name: "About", link: "/about" },
-    { name: "Projects", link: "/projects" },
-    { name: "Skills", link: "/skills" },
+    { name: "Home", link: "#" },
+    { name: "About", link: "#about" },
+    { name: "Projects", link: "#projects" },
+    { name: "Skills", link: "#skills" },
     { name: "Certifications", link: "#certifications" },
-    { name: "Contact", link: "/contact" },
+    { name: "Contact", link: "#contact" },
   ];
 
   const handleItemClick = () => {
@@ -36,7 +36,17 @@ export function Navigation() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} onItemClick={handleItemClick} />
-        <NavbarButton href="/contact" variant="primary">
+        <NavbarButton 
+          href="#contact" 
+          variant="primary"
+          onClick={(e) => {
+            e.preventDefault();
+            const element = document.querySelector('#contact');
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
           Get in Touch
         </NavbarButton>
       </NavBody>
@@ -53,14 +63,34 @@ export function Navigation() {
             <a
               key={idx}
               href={item.link}
-              onClick={handleItemClick}
+              onClick={(e) => {
+                handleItemClick();
+                if (item.link.startsWith('#')) {
+                  e.preventDefault();
+                  const element = document.querySelector(item.link);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }
+              }}
               className="block w-full px-4 py-2 text-left text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral-100"
             >
               {item.name}
             </a>
           ))}
           <div className="mt-4 w-full">
-            <NavbarButton href="/contact" variant="primary" className="w-full">
+            <NavbarButton 
+              href="#contact" 
+              variant="primary" 
+              className="w-full"
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.querySelector('#contact');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               Get in Touch
             </NavbarButton>
           </div>
