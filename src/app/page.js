@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 // Portfolio page - deployment fix
 import { Button } from "@/components/ui/button";
 import {
@@ -7,6 +8,7 @@ import {
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
 import { FloatingDock } from "@/components/ui/floating-dock";
+import LightRays from "@/components/ui/light-rays";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -15,14 +17,34 @@ import {
   IconPhone,
   IconDownload,
   IconUser,
+  IconChevronDown,
+  IconChevronUp,
 } from "@tabler/icons-react";
 
 export default function Home() {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
-    <div className="min-h-screen pt-24 px-4">
-      <div className="max-w-7xl mx-auto">
-        <section className="text-center py-20">
-          <h1 className="text-6xl font-bold text-foreground mb-6">
+    <div className="min-h-screen pt-24 px-4 relative">
+      {/* Light rays background effect */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#3b82f6"
+          raysSpeed={0.5}
+          lightSpread={0.8}
+          rayLength={1.5}
+          followMouse={true}
+          mouseInfluence={0.15}
+          noiseAmount={0.05}
+          distortion={0.02}
+          className="opacity-20"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <section className="text-center py-20 relative">
+          <h1 className="text-6xl font-bold text-foreground mb-6 hover:text-primary transition-colors duration-500">
             Krishna Vijaykumar Randad
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -32,16 +54,19 @@ export default function Home() {
           </p>
           <div className="flex gap-4 justify-center">
             <Button
+              className="group relative overflow-hidden hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
               onClick={() =>
                 document
                   .getElementById("projects")
                   .scrollIntoView({ behavior: "smooth" })
               }
             >
-              View My Work
+              <span className="relative z-10">View My Work</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Button>
             <Button
               variant="outline"
+              className="group relative overflow-hidden hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:bg-primary hover:text-primary-foreground hover:border-primary"
               onClick={() =>
                 window.open(
                   "https://drive.google.com/file/d/1Zk21P9hQxXAqEv07gRW0IsoxhmX7ZDMr/view?usp=sharing",
@@ -49,7 +74,7 @@ export default function Home() {
                 )
               }
             >
-              Download Resume
+              <span className="relative z-10">Download Resume</span>
             </Button>
           </div>
         </section>
@@ -85,26 +110,35 @@ export default function Home() {
             ].map((project, i) => (
               <div
                 key={i}
-                className="p-6 bg-card rounded-lg shadow-lg border hover:shadow-xl transition-shadow"
+                className="group relative p-6 bg-card rounded-xl shadow-lg border border-border hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden"
               >
-                <h3 className="text-xl font-semibold mb-4 text-card-foreground">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="mb-4">
-                  <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded">
-                    {project.tech}
-                  </span>
+                {/* Hover glow effect */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Animated border glow */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-cyan-500/30 opacity-0 group-hover:opacity-100 blur-sm -z-10 transition-opacity duration-500" />
+
+                <div className="relative z-10">
+                  <h3 className="text-xl font-semibold mb-4 text-card-foreground group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed group-hover:text-card-foreground/80 transition-colors duration-300">
+                    {project.description}
+                  </p>
+                  <div className="mb-4">
+                    <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full group-hover:bg-primary/20 group-hover:text-primary transition-all duration-300">
+                      {project.tech}
+                    </span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300"
+                    onClick={() => window.open(project.link, "_blank")}
+                  >
+                    View Project →
+                  </Button>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => window.open(project.link, "_blank")}
-                >
-                  View Project →
-                </Button>
               </div>
             ))}
           </div>
@@ -168,47 +202,52 @@ export default function Home() {
               ].map((project, i) => (
                 <div
                   key={i}
-                  className="p-4 bg-card rounded-lg border hover:shadow-lg transition-all duration-200 group"
+                  className="group relative p-4 bg-card rounded-xl border border-border hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-105 hover:-translate-y-1 overflow-hidden"
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <span
-                      className={`text-xs px-2 py-1 rounded-full font-medium ${
-                        project.category === "ML/AI"
-                          ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300"
-                          : project.category === "IoT"
-                          ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
-                          : project.category === "Web Dev"
-                          ? "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300"
-                          : project.category === "Computer Vision"
-                          ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300"
-                          : "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
-                      }`}
+                  {/* Subtle hover glow */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span
+                        className={`text-xs px-3 py-1 rounded-full font-medium transition-all duration-300 group-hover:scale-105 ${
+                          project.category === "ML/AI"
+                            ? "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 group-hover:bg-blue-200 dark:group-hover:bg-blue-800/50"
+                            : project.category === "IoT"
+                            ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 group-hover:bg-green-200 dark:group-hover:bg-green-800/50"
+                            : project.category === "Web Dev"
+                            ? "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300 group-hover:bg-purple-200 dark:group-hover:bg-purple-800/50"
+                            : project.category === "Computer Vision"
+                            ? "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 group-hover:bg-orange-200 dark:group-hover:bg-orange-800/50"
+                            : "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300 group-hover:bg-gray-200 dark:group-hover:bg-gray-800/50"
+                        }`}
+                      >
+                        {project.category}
+                      </span>
+                    </div>
+                    <h4 className="font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                      {project.title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground mb-3 leading-relaxed group-hover:text-card-foreground/80 transition-colors duration-300">
+                      {project.desc}
+                    </p>
+                    <div className="mb-3">
+                      <span className="text-xs text-primary bg-primary/10 px-2 py-1 rounded group-hover:bg-primary/20 transition-colors duration-300">
+                        {project.tech}
+                      </span>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="w-full text-xs group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300"
+                      onClick={() => window.open(project.url, "_blank")}
                     >
-                      {project.category}
-                    </span>
+                      {project.url.includes("tinkercad")
+                        ? "View Simulation"
+                        : "View Code"}{" "}
+                      →
+                    </Button>
                   </div>
-                  <h4 className="font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h4>
-                  <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
-                    {project.desc}
-                  </p>
-                  <div className="mb-3">
-                    <span className="text-xs text-primary bg-primary/10 px-2 py-1 rounded">
-                      {project.tech}
-                    </span>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full text-xs"
-                    onClick={() => window.open(project.url, "_blank")}
-                  >
-                    {project.url.includes("tinkercad")
-                      ? "View Simulation"
-                      : "View Code"}{" "}
-                    →
-                  </Button>
                 </div>
               ))}
             </div>
@@ -243,25 +282,27 @@ export default function Home() {
               </h3>
               <div className="max-w-4xl mx-auto space-y-6">
                 {/* VIT */}
-                <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div className="group p-6 bg-card rounded-xl border border-border shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 relative overflow-hidden">
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
-                      <h4 className="text-xl font-bold text-card-foreground mb-2">
+                      <h4 className="text-xl font-bold text-card-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                         Vellore Institute of Technology
                       </h4>
-                      <p className="text-lg text-muted-foreground mb-2">
+                      <p className="text-lg text-muted-foreground mb-2 group-hover:text-card-foreground/80 transition-colors duration-300">
                         Bachelor of Technology in Computer Science with
                         Specialization in IoT
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground group-hover:text-card-foreground/70 transition-colors duration-300">
                         Tamil Nadu, India
                       </p>
                     </div>
                     <div className="text-right mt-4 md:mt-0">
-                      <span className="text-2xl font-bold text-primary">
+                      <span className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-300 inline-block">
                         9.13 CGPA
                       </span>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground group-hover:text-card-foreground/70 transition-colors duration-300">
                         Sept. 2022 - Present
                       </p>
                     </div>
@@ -269,24 +310,25 @@ export default function Home() {
                 </div>
 
                 {/* HSC */}
-                <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div className="group p-6 bg-card rounded-xl border border-border shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 relative overflow-hidden">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
-                      <h4 className="text-xl font-bold text-card-foreground mb-2">
+                      <h4 className="text-xl font-bold text-card-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                         R.L.T. College of Science, Akola
                       </h4>
-                      <p className="text-lg text-muted-foreground mb-2">
+                      <p className="text-lg text-muted-foreground mb-2 group-hover:text-card-foreground/80 transition-colors duration-300">
                         HSC - Maharashtra State Board
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground group-hover:text-card-foreground/70 transition-colors duration-300">
                         Maharashtra, India
                       </p>
                     </div>
                     <div className="text-right mt-4 md:mt-0">
-                      <span className="text-2xl font-bold text-primary">
+                      <span className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-300 inline-block">
                         77%
                       </span>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground group-hover:text-card-foreground/70 transition-colors duration-300">
                         May 2020 - Mar. 2022
                       </p>
                     </div>
@@ -294,24 +336,25 @@ export default function Home() {
                 </div>
 
                 {/* SSC */}
-                <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div className="group p-6 bg-card rounded-xl border border-border shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 relative overflow-hidden">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
-                      <h4 className="text-xl font-bold text-card-foreground mb-2">
+                      <h4 className="text-xl font-bold text-card-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                         Kothari Convent High School, Akola
                       </h4>
-                      <p className="text-lg text-muted-foreground mb-2">
+                      <p className="text-lg text-muted-foreground mb-2 group-hover:text-card-foreground/80 transition-colors duration-300">
                         SSC - Maharashtra State Board
                       </p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground group-hover:text-card-foreground/70 transition-colors duration-300">
                         Maharashtra, India
                       </p>
                     </div>
                     <div className="text-right mt-4 md:mt-0">
-                      <span className="text-2xl font-bold text-primary">
+                      <span className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-300 inline-block">
                         97%
                       </span>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground group-hover:text-card-foreground/70 transition-colors duration-300">
                         Jun. 2010 - Mar. 2020
                       </p>
                     </div>
@@ -326,10 +369,11 @@ export default function Home() {
                 Professional Experience
               </h3>
               <div className="max-w-4xl mx-auto">
-                <div className="p-6 bg-card rounded-xl border border-border shadow-lg">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                <div className="group p-6 bg-card rounded-xl border border-border shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 relative overflow-hidden">
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                     <div className="flex-1">
-                      <h4 className="text-xl font-bold text-card-foreground mb-2">
+                      <h4 className="text-xl font-bold text-card-foreground mb-2 group-hover:text-primary transition-colors duration-300">
                         AI Intern (On-site)
                       </h4>
                       <p className="text-lg text-primary font-semibold mb-2">
@@ -802,69 +846,93 @@ export default function Home() {
 
               {/* Contact Form */}
               <div>
-                <h3 className="text-2xl font-bold text-foreground mb-6">
-                  Send a Message
-                </h3>
-                <form
-                  action="https://formspree.io/f/xpzgojzy"
-                  method="POST"
-                  className="space-y-6"
-                >
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-card-foreground mb-2"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      placeholder="Your name"
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-card-foreground mb-2"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      placeholder="your.email@example.com"
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-card-foreground mb-2"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={6}
-                      placeholder="Your message..."
-                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground resize-none"
-                    />
-                  </div>
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-2xl font-bold text-foreground">
+                    Send a Message
+                  </h3>
                   <Button
-                    type="submit"
-                    className="w-full py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-colors"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsFormOpen(!isFormOpen)}
+                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    Send Message
+                    {isFormOpen ? "Hide Form" : "Show Form"}
+                    {isFormOpen ? (
+                      <IconChevronUp className="h-4 w-4" />
+                    ) : (
+                      <IconChevronDown className="h-4 w-4" />
+                    )}
                   </Button>
-                </form>
+                </div>
+
+                <div
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                    isFormOpen
+                      ? "max-h-[800px] opacity-100"
+                      : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <form
+                    action="https://formspree.io/f/xpzgojzy"
+                    method="POST"
+                    className="space-y-6"
+                  >
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-card-foreground mb-2"
+                      >
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        placeholder="Your name"
+                        className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-card-foreground mb-2"
+                      >
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="your.email@example.com"
+                        className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium text-card-foreground mb-2"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={6}
+                        placeholder="Your message..."
+                        className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground resize-none"
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      className="w-full py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-colors"
+                    >
+                      Send Message
+                    </Button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

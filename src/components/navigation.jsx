@@ -23,7 +23,6 @@ export function Navigation() {
     { name: "Projects", link: "#projects" },
     { name: "Skills", link: "#skills" },
     { name: "Certifications", link: "#certifications" },
-    { name: "Contact", link: "#contact" },
   ];
 
   const handleItemClick = () => {
@@ -36,14 +35,14 @@ export function Navigation() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} onItemClick={handleItemClick} />
-        <NavbarButton 
-          href="#contact" 
+        <NavbarButton
+          href="#contact"
           variant="primary"
           onClick={(e) => {
             e.preventDefault();
-            const element = document.querySelector('#contact');
+            const element = document.querySelector("#contact");
             if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
+              element.scrollIntoView({ behavior: "smooth" });
             }
           }}
         >
@@ -65,11 +64,11 @@ export function Navigation() {
               href={item.link}
               onClick={(e) => {
                 handleItemClick();
-                if (item.link.startsWith('#')) {
+                if (item.link.startsWith("#")) {
                   e.preventDefault();
                   const element = document.querySelector(item.link);
                   if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
+                    element.scrollIntoView({ behavior: "smooth" });
                   }
                 }
               }}
@@ -79,15 +78,15 @@ export function Navigation() {
             </a>
           ))}
           <div className="mt-4 w-full">
-            <NavbarButton 
-              href="#contact" 
-              variant="primary" 
+            <NavbarButton
+              href="#contact"
+              variant="primary"
               className="w-full"
               onClick={(e) => {
                 e.preventDefault();
-                const element = document.querySelector('#contact');
+                const element = document.querySelector("#contact");
                 if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
+                  element.scrollIntoView({ behavior: "smooth" });
                 }
               }}
             >

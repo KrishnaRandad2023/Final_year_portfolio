@@ -109,11 +109,11 @@ export const NavItems = ({ items, className, onItemClick }) => {
           onMouseEnter={() => setHovered(idx)}
           onClick={(e) => {
             onItemClick();
-            if (item.link.startsWith('#')) {
+            if (item.link.startsWith("#")) {
               e.preventDefault();
               const element = document.querySelector(item.link);
               if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                element.scrollIntoView({ behavior: "smooth" });
               }
             }
           }}
