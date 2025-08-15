@@ -31,7 +31,13 @@ export default function Home() {
             with expertise in Python, Java, React, and cloud technologies.
           </p>
           <div className="flex gap-4 justify-center">
-            <Button onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>
+            <Button
+              onClick={() =>
+                document
+                  .getElementById("projects")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+            >
               View My Work
             </Button>
             <Button
@@ -244,13 +250,20 @@ export default function Home() {
                         Vellore Institute of Technology
                       </h4>
                       <p className="text-lg text-muted-foreground mb-2">
-                        Bachelor of Technology in Computer Science with Specialization in IoT
+                        Bachelor of Technology in Computer Science with
+                        Specialization in IoT
                       </p>
-                      <p className="text-sm text-muted-foreground">Tamil Nadu, India</p>
+                      <p className="text-sm text-muted-foreground">
+                        Tamil Nadu, India
+                      </p>
                     </div>
                     <div className="text-right mt-4 md:mt-0">
-                      <span className="text-2xl font-bold text-primary">9.13 CGPA</span>
-                      <p className="text-sm text-muted-foreground">Sept. 2022 - Present</p>
+                      <span className="text-2xl font-bold text-primary">
+                        9.13 CGPA
+                      </span>
+                      <p className="text-sm text-muted-foreground">
+                        Sept. 2022 - Present
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -265,11 +278,17 @@ export default function Home() {
                       <p className="text-lg text-muted-foreground mb-2">
                         HSC - Maharashtra State Board
                       </p>
-                      <p className="text-sm text-muted-foreground">Maharashtra, India</p>
+                      <p className="text-sm text-muted-foreground">
+                        Maharashtra, India
+                      </p>
                     </div>
                     <div className="text-right mt-4 md:mt-0">
-                      <span className="text-2xl font-bold text-primary">77%</span>
-                      <p className="text-sm text-muted-foreground">May 2020 - Mar. 2022</p>
+                      <span className="text-2xl font-bold text-primary">
+                        77%
+                      </span>
+                      <p className="text-sm text-muted-foreground">
+                        May 2020 - Mar. 2022
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -284,11 +303,17 @@ export default function Home() {
                       <p className="text-lg text-muted-foreground mb-2">
                         SSC - Maharashtra State Board
                       </p>
-                      <p className="text-sm text-muted-foreground">Maharashtra, India</p>
+                      <p className="text-sm text-muted-foreground">
+                        Maharashtra, India
+                      </p>
                     </div>
                     <div className="text-right mt-4 md:mt-0">
-                      <span className="text-2xl font-bold text-primary">97%</span>
-                      <p className="text-sm text-muted-foreground">Jun. 2010 - Mar. 2020</p>
+                      <span className="text-2xl font-bold text-primary">
+                        97%
+                      </span>
+                      <p className="text-sm text-muted-foreground">
+                        Jun. 2010 - Mar. 2020
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -318,13 +343,21 @@ export default function Home() {
                   <div className="mb-4">
                     <ul className="text-sm text-muted-foreground space-y-2">
                       <li>
-                        • Built an Offline Automated Form Filling system processing 500+ voice transcripts daily, extracting structured data from Android apps and boosting data collection efficiency by 35%
+                        • Built an Offline Automated Form Filling system
+                        processing 500+ voice transcripts daily, extracting
+                        structured data from Android apps and boosting data
+                        collection efficiency by 35%
                       </li>
                       <li>
-                        • Architected and optimized a modular NLP pipeline combining T5 and RoBERTa models, achieving 92% accuracy and reducing inference time by 40% through ONNX, TFLite, and GGUF deployment strategies
+                        • Architected and optimized a modular NLP pipeline
+                        combining T5 and RoBERTa models, achieving 92% accuracy
+                        and reducing inference time by 40% through ONNX, TFLite,
+                        and GGUF deployment strategies
                       </li>
                       <li>
-                        • Collaborated with 3 Android engineers across 2 teams to integrate model capabilities, can deliver robust offline functionality for 10,000+ daily active users
+                        • Collaborated with 3 Android engineers across 2 teams
+                        to integrate model capabilities, can deliver robust
+                        offline functionality for 10,000+ daily active users
                       </li>
                     </ul>
                   </div>
@@ -361,14 +394,16 @@ export default function Home() {
                       Web Technologies
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                      {["JavaScript", "HTML", "CSS", "React.js", "Node.js"].map((skill, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                      {["JavaScript", "HTML", "CSS", "React.js", "Node.js"].map(
+                        (skill, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
+                          >
+                            {skill}
+                          </span>
+                        )
+                      )}
                     </div>
                   </div>
 
@@ -395,7 +430,16 @@ export default function Home() {
                       ML/AI & Data Science
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                      {["NumPy", "Pandas", "Scikit-learn", "Matplotlib", "OpenCV", "ONNX", "TFLite", "GGUF"].map((skill, index) => (
+                      {[
+                        "NumPy",
+                        "Pandas",
+                        "Scikit-learn",
+                        "Matplotlib",
+                        "OpenCV",
+                        "ONNX",
+                        "TFLite",
+                        "GGUF",
+                      ].map((skill, index) => (
                         <span
                           key={index}
                           className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
@@ -412,14 +456,16 @@ export default function Home() {
                       Development Tools
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                      {["Git", "VS Code", "Jupyter Notebook", "CodeBlocks"].map((skill, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                      {["Git", "VS Code", "Jupyter Notebook", "CodeBlocks"].map(
+                        (skill, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium"
+                          >
+                            {skill}
+                          </span>
+                        )
+                      )}
                     </div>
                   </div>
 
@@ -702,39 +748,123 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">
             Get In Touch
           </h2>
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-lg text-muted-foreground text-center leading-relaxed mb-12">
               I&apos;m always open to discussing new opportunities, interesting
               projects, or just having a chat about technology. Feel free to
-              reach out through any of the platforms below!
+              reach out!
             </p>
 
-            {/* Contact Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              <div className="p-6 bg-card rounded-lg border shadow-sm">
-                <IconMail className="h-8 w-8 mx-auto mb-4 text-primary" />
-                <h3 className="font-semibold text-card-foreground mb-2">
-                  Email
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Contact Information */}
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-6">
+                  Contact Information
                 </h3>
-                <p className="text-muted-foreground text-sm">
-                  krishnaengg.work2022@gmail.com
-                </p>
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-primary/10 rounded-lg">
+                      <IconMail className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-card-foreground">
+                        Email
+                      </h4>
+                      <p className="text-muted-foreground">
+                        krishnaengg.work2022@gmail.com
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-primary/10 rounded-lg">
+                      <IconPhone className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-card-foreground">
+                        Phone
+                      </h4>
+                      <p className="text-muted-foreground">+91-94228-60229</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-primary/10 rounded-lg">
+                      <IconUser className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-card-foreground">
+                        Location
+                      </h4>
+                      <p className="text-muted-foreground">Tamil Nadu, India</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="p-6 bg-card rounded-lg border shadow-sm">
-                <IconPhone className="h-8 w-8 mx-auto mb-4 text-primary" />
-                <h3 className="font-semibold text-card-foreground mb-2">
-                  Phone
+
+              {/* Contact Form */}
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-6">
+                  Send a Message
                 </h3>
-                <p className="text-muted-foreground text-sm">+91-94228-60229</p>
-              </div>
-              <div className="p-6 bg-card rounded-lg border shadow-sm">
-                <IconUser className="h-8 w-8 mx-auto mb-4 text-primary" />
-                <h3 className="font-semibold text-card-foreground mb-2">
-                  Location
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  Tamil Nadu, India
-                </p>
+                <form
+                  action="https://formspree.io/f/xpzgojzy"
+                  method="POST"
+                  className="space-y-6"
+                >
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-card-foreground mb-2"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      placeholder="Your name"
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-card-foreground mb-2"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      placeholder="your.email@example.com"
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-card-foreground mb-2"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={6}
+                      placeholder="Your message..."
+                      className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-card-foreground placeholder-muted-foreground resize-none"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="w-full py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-lg transition-colors"
+                  >
+                    Send Message
+                  </Button>
+                </form>
               </div>
             </div>
           </div>
